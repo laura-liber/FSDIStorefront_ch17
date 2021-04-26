@@ -4,18 +4,19 @@ import QuantityPicker from "./quantityPicker";
 import "./product.css";
 
 class Product extends Component {
+    state = {};
     render() { 
         return ( 
             <div className="product">
-                <img src="https://picsum.photos/240/200" alt="product" />
-                <h6 className="title">Title of the Product</h6>
+                <img src={"/images/products/" + this.props.data.image} alt="product" />
+                <h6 className="title">{this.props.data.title}</h6>
                 <label className="total-value">Total: $10.00</label>
                 <label className="price-value">Price: $10.00</label>
 
                 <QuantityPicker></QuantityPicker>
 
                 <button className="btn btn-sm btn-primary">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>    
+                    <i className="fa fa-cart-plus" aria-hidden="true"></i>    
                     Add
                 </button>
             </div>
