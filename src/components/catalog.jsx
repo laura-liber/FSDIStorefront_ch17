@@ -26,6 +26,10 @@ class Catalog extends Component {
         // get data from the service
         var service = new ProductService();
         var catalog = service.getCatalog();
+
+        //get unique categories
+        var cats = [];
+        
         this.setState({ catalog: catalog });
     }
 }
