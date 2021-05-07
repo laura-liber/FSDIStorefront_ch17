@@ -1,3 +1,5 @@
+import axios from "axios";
+
 var data = [
     {
         id: "5f40a6baac77a903d8f682c6",
@@ -75,9 +77,20 @@ var data = [
     ];
 
 class ProductService {
-    getCatalog() {
+    serverUrl='http://fsdi.azurewebsites.net/api';
+
+    async getCatalog() {
         //Todo: logic to connect to server and retrieve the catalog
-        return data;
+        //JS fetch
+        //$.ajax()
+        //axios
+
+        //use local data in case server is not working
+        //return data;
+        //axios.delete(url,data)
+
+        var res= await axios.get(this.serverUrl + "/products");
+        return res.data;
     }
     
     //demo method

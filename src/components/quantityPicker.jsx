@@ -16,7 +16,7 @@ class QuantityPicker extends Component {
         </button>
         <label>{this.state.quantity}</label>
         <button className="btn btn-sm btn-info" 
-        disabled={this.state.quantity == this.props.minimum} 
+        disabled={this.state.quantity === this.props.minimum} 
         onClick={this.decrease}>
           -
         </button>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import QuantityPicker from "./quantityPicker";
 
 import "./product.css";
+import { connect } from "react-redux";
+import { addToCart } from "../store/actions";
 
 class Product extends Component {
     state = {
@@ -20,7 +22,9 @@ class Product extends Component {
                     onValueChange={this.handleQuantityChange}
                 ></QuantityPicker>
 
-                <button className="btn btn-sm btn-primary">
+                <button 
+                    onClick={this.handleAddToCartButton}
+                    className="btn btn-sm btn-primary">
                     <i className="fa fa-cart-plus" aria-hidden="true"></i>    
                     Add
                 </button>
@@ -34,11 +38,17 @@ class Product extends Component {
     }
 
     handleQuantityChange = (qty) => {
-        console.log("qp val changed to:" + qty);
         this.setState({quantity: qty});
+    };
+
+    handleAddToCartButton = () => {
+        var item = {...this.props.data }; //deep copy an object
+        item.quantity = this.state.quantity;
+        console.log(item);
+        this.props.addToCart(item);
     };
 }
  
-export default Product;
+export default connect(null, { addToCart }) (Product);
 
 
